@@ -2,7 +2,7 @@
 
 这是一个 Flask Web 应用，用于处理文本补全请求。它使用 OpenAI API 来实现文本补全功能。
 
-## 前置调钱
+## 前置条件
 - 拥有 OpenAI API 账户
 - 创建 [API keys](https://platform.openai.com/account/api-keys)
 - 一台拥有公网能力的服务器
