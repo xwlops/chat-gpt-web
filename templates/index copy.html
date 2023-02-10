@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>人工智能问答ChatGPT</title>
+    <style>
+        .msg {
+            background-color: lightblue;
+            border-radius: 10px;
+            font-size: 14px;
+            line-height: 22px;
+            margin: 10px 0;
+            padding: 10px;
+            width: 50%;
+        }
+        .placeholder {
+            color: #b30715;
+            font-size: 14px;
+            text-align: center;
+        }
+        .chat-box {
+            background-color: var(--el-input-bg-color,var(--el-fill-color-blank));
+            background-image: none;
+            border: none;
+            border-radius: var(--el-input-border-radius,var(--el-border-radius-base));
+            box-shadow: 0 0 0 1px var(--el-input-border-color,var(--el-border-color)) inset;
+            box-sizing: border-box;
+            color: var(--el-input-text-color,var(--el-text-color-regular));
+            display: block;
+            font-family: inherit;
+            font-size: inherit;
+            height: auto;
+            line-height: 1.5;
+            padding: 5px 11px;
+            position: fixed;
+            resize: vertical;
+            transition: var(--el-transition-box-shadow);
+            width: 100%;
+        }
+        .loading {
+            color: red;
+            display: none;
+        }
+        .question {
+            background-color: lightblue;
+            border-radius: 10px;
+            margin: 10px 0;
+            padding: 10px;
+            text-align: left;
+        }
+        .res {
+            background-color: lightyellow;
+            border-radius: 10px;
+            margin: 10px 0;
+            padding: 10px;
+            text-align: left;
+        }
+        .footer-box {
+            color: #666;
+            font-size: 13px;
+            position: fixed;
+            text-align: center;
+            width: 100%;
+        }
+    </style>
+</head> -->
+<body>
+    <div align="center">
+        <h2>人工智能问答ChatGPT</h2>
+        <div class="msg">与Ai对话，请描述您的需求-支持中文、英语、日本语等<br />
+        请持续关注本站,AI功能会更新,会变得更加智能!<br />
+        可能会出现关键字误判情况,AI每天会自动训练和调整!</div>
+        <div class="msg">如需秘钥请联系邮箱xwlops@gmail.com购买</div>
+        <div>
+            <form>
+              <input type="text" id="edit_openaikey" placeholder="请在此输入秘钥,没有秘钥则每天限额10次" style="width: 50vw;">
+            </form>
+          </div>
+        {% if message %} {{ message }} {% endif %}
+            {% if question %}
+            <div class="loading" id="loading">正在梳理答案，请稍等...</div>
+            <div class="question">
+                <b> 🙋‍♂️ :</b> {{ question }}
+            </div>
+            <div class="res">
+                <b> 👨‍💻 :</b> {{ res }}
+            </div>
+            {% endif %}
+            <div class="chat-box">
+                <form method="post" onsubmit="submit.disabled=true">
+                    <textarea style="width:60%;" name="question" placeholder="提问一个问题" rows="11" id="form"></textarea>
+                    <input type="submit" value="提交" id="submit"style="width:60%; color: white; background-color: #3079c3; text-align:center; margin-top: 10px; padding: 10px 0;" />
+                </form>
+            <div class="footer-box">Copyright ©2023 Powered by <a href="https://www.cnsre.cn">SRE运维博客</a></div>
+        </div>
+    </div>
+</body>
+<script>
+    let loading = document.getElementById('loading');
+    let form = document.querySelector('form');
+    form.addEventListener('submit', () => {
+        loading.style.display = 'block';
+    });
+</script>
+</html>

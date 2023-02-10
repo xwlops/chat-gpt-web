@@ -1,10 +1,7 @@
 import openai
 from flask import Flask, request, render_template, redirect
-from flask_limiter import Limiter
-from flask_limiter.util import get_remote_address
 
 server = Flask(__name__)
-limiter = Limiter(server, key_func=get_remote_address)
 
 openai.api_key = 'xxxxx'
 
@@ -29,7 +26,6 @@ def get_completion(question):
 
 
 @server.route('/', methods=['GET', 'POST'])
-@limiter.limit("10/day")
 def get_request_json():
     if request.method == 'POST':
         if len(request.form['question']) < 1:

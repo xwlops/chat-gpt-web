@@ -1,78 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<!--自适应屏幕大小-->
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<head>
-    <meta charset="UTF-8">
-    <title>人工智能问答ChatGPT</title>
-    <style>
-        .msg {
-            width: 50%;
-            font-size: 14px;
-            line-height: 22px;
-            background-color: lightblue;
-            border-radius: 10px;
-            padding: 10px;
-            margin: 10px 0;
-        }
-        .chat-box {
-            position: fixed;
-            bottom: 30px;
-            display: block;
-            resize: vertical;
-            padding: 5px 11px;
-            line-height: 1.5;
-            box-sizing: border-box;
-            width: 100%;
-            font-size: inherit;
-            font-family: inherit;
-            color: var(--el-input-text-color,var(--el-text-color-regular));
-            background-color: var(--el-input-bg-color,var(--el-fill-color-blank));
-            background-image: none;
-            box-shadow: 0 0 0 1px var(--el-input-border-color,var(--el-border-color)) inset;
-            border-radius: var(--el-input-border-radius,var(--el-border-radius-base));
-            transition: var(--el-transition-box-shadow);
-            border: none;
-        }
-        .loading {
-            color: red;
-            display: none;
-        }
-        .question {
-            text-align: left;
-            background-color: lightblue;
-            border-radius: 10px;
-            padding: 10px;
-            margin: 10px 0;
-        }
-        .res {
-            text-align: left;
-            background-color: lightyellow;
-            border-radius: 10px;
-            padding: 10px;
-            margin: 10px 0;
-        }
-        .footer-box {
-            /* background-color: #f6f6f6; */
-            position: fixed;
-            bottom: 5px;
-            text-align: center;
-            font-size: 13px;
-            width: 100%;
-            color: #666;
-            z-index: 999;
-        }
-    </style>
-</head>
 <body>
-    <div align="center">
-        <h2>人工智能问答ChatGPT</h2>
-        <div class="msg">与Ai对话，请描述您的需求-支持中文、英语、日本语等<br />
-        请持续关注本站,AI功能会更新,会变得更加智能!<br />
-        可能会出现关键字误判情况,AI每天会自动训练和调整!</div><br />
+        <div>
+            <form>
+              <input type="text" id="edit_openaikey" placeholder="请在此输入秘钥,没有秘钥则每天限额10次" style="width: 50vw;">
+            </form>
+          </div>
         {% if message %} {{ message }} {% endif %}
             {% if question %}
-            <div class="loading" id="loading">正在梳理答案，请稍等...</div>
+            <div class="loading" id="loading" style="display: none;">正在梳理答案，请稍等...</div>
             <div class="question">
                 <b> 🙋‍♂️ :</b> {{ question }}
             </div>
@@ -81,21 +17,25 @@
             </div>
             {% endif %}
             <div class="chat-box">
-                <form method="post" onsubmit="submit.disabled=true">
-                    <textarea style="width:60%;" name="question" placeholder="提问一个问题" rows="11" id="form"></textarea>
+                <form method="post" id="chat-form" onsubmit="submitForm()">
                     <input type="submit" value="提交" id="submit"style="width:60%; color: white; background-color: #3079c3; text-align:center; margin-top: 10px; padding: 10px 0;" />
                 </form>
-            <div class="footer-box">Copyright ©2023 Powered by <a href="https://www.cnsre.cn">SRE运维博客</a></div>
         </div>
     </div>
 </body>
 <script>
-    let loading = document.getElementById('loading');
-    let form = document.querySelector('form');
-
-    form.addEventListener('submit', () => {
+    function submitForm() {
+        let openaikey = document.getElementById('edit_openaikey').value;
+        let loading = document.getElementById('loading');
+        let form = document.querySelector('form');
+        let formData = new FormData(form);
         loading.style.display = 'block';
-    });
-
+        if (openaikey) {
+            formData.append('openaikey', openaikey);
+        }
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', '/');
+        xhr.send(formData);
+    }
 </script>
 </html>
