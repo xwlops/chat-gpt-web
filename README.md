@@ -1,27 +1,29 @@
-# chat-gpt-web
+# 基于OpenAI API的问答系统
+## 简介
+本项目使用Flask框架，基于OpenAI API开发的问答系统。它允许用户输入问题，并使用OpenAI API生成答案。
 
-这是一个 Flask Web 应用，用于处理文本补全请求。它使用 OpenAI API 来实现文本补全功能。
-
-## 前置条件
-- 拥有 OpenAI API 账户
-- 创建 [API keys](https://platform.openai.com/account/api-keys)
-- 一台拥有公网能力的服务器
-## 安装部署
-
-### 克隆项目
+## 安装
+- 安装Flask：
 ```
-git clone https://github.com/zops/chat-gpt-web.git
+pip install flask
 ```
-### 修改配置
-在 `app.py` 中修改 `openai.api_key` 的值,修改为你创建的 `API keys`
+- 安装OpenAI API的Python客户端：
+```
+pip install openai
+```
+## 使用
+- 在代码中配置OpenAI API的密钥：
 ```
 openai.api_key = 'xxxxx'
 ```
-### 安装依赖
-安装python 以及对应的依赖,提示少什么装什么.
-### 启动项目
+- 启动Flask服务器：
 ```
-cd chat-gpt-web && python app.py 
-``` 
-### 测试访问
-http://{你的IP地址}:{80端口}
+python server.py
+```
+- 在浏览器中访问http://localhost:80，输入问题并生成答案。
+## 功能说明
+使用OpenAI API的Completion.create方法，传入问题和参数，生成答案。
+使用Flask框架，接收前端发送的问题，并返回生成的答案。
+## 版本信息
+- 当前版本：v1.0.0
+- 日期：2023年2月10日
