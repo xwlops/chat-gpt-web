@@ -78,7 +78,7 @@
             由于API价格高昂，请减少不必要的提问!<br />
             BUG反馈:请到博客内留言 <a href="https://www.cnsre.cn/posts/comment/">cnsre.cn</a> </div><br />
         {% if message %} {{ message }} {% endif %}
-        <div class="loading" id="loading">正在梳理答案，请稍等...<br /></div>
+        <div class="loading" id="loading">正在梳理答案，请稍等...<br />请勿重复提交!!!</div>
         <form method="post" onsubmit="submit.disabled=true">
             <textarea style="width:60%; height: 50px;" name="question" placeholder="提问一个问题" rows="11" id="form"></textarea>
             <input type="submit" value="提交" id="submit"
