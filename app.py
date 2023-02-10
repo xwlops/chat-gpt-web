@@ -3,7 +3,7 @@ from flask import Flask, request, render_template, redirect
 
 server = Flask(__name__)
 
-openai.api_key = 'xxxxx'
+openai.api_key = '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'
 
 
 def get_completion(question):
@@ -19,7 +19,6 @@ def get_completion(question):
             stop=None
         )
     except Exception as e:
-
         print(e)
         return e
     return response["choices"][0].text
@@ -31,7 +30,7 @@ def get_request_json():
         if len(request.form['question']) < 1:
             return render_template(
                 'index.html', question="null", res="问题不能为空")
-        question = request.form['question']
+        question = request.form['question'].encode('utf-8').decode('utf-8')
         print("======================================")
         print("接到请求:", question)
         res = get_completion(question)
