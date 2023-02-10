@@ -18,7 +18,8 @@ openai.api_key = 'xxxxx'
 ```
 - 启动Flask服务器：
 ```
-python server.py
+touch nohup.out
+nohup python3 app.py 
 ```
 - 在浏览器中访问http://localhost:80，输入问题并生成答案。
 ## 功能说明
