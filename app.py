@@ -8,7 +8,6 @@ limiter = Limiter(server, key_func=get_remote_address)
 
 openai.api_key = 'xxxxx'
 
-
 def get_completion(question):
     try:
         response = openai.Completion.create(
@@ -27,7 +26,6 @@ def get_completion(question):
         return e
     return response["choices"][0].text
 
-
 @server.route('/', methods=['GET', 'POST'])
 @limiter.limit("10/day")
 def get_request_json():
@@ -44,7 +42,6 @@ def get_request_json():
 
         return render_template('index.html', question=question, res=str(res))
     return render_template('index.html', question=0)
-
 
 if __name__ == '__main__':
     server.run(debug=True, host='0.0.0.0', port=80)
