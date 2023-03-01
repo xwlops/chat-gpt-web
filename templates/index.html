@@ -2,7 +2,6 @@
 <html lang="en">
 <!--自适应屏幕大小-->
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-
 <head>
     <meta charset="UTF-8">
     <title>人工智能问答ChatGPT</title>
@@ -16,61 +15,59 @@
             padding: 10px;
             margin: 10px 0;
         }
-
         .chat-box {
-            position: fixed;
-            bottom: 30px;
-            display: block;
-            resize: vertical;
-            padding: 5px 11px;
-            line-height: 1.5;
-            box-sizing: border-box;
-            width: 100%;
-            font-size: inherit;
-            font-family: inherit;
-            color: var(--el-input-text-color, var(--el-text-color-regular));
-            background-color: var(--el-input-bg-color, var(--el-fill-color-blank));
-            background-image: none;
-            box-shadow: 0 0 0 1px var(--el-input-border-color, var(--el-border-color)) inset;
-            border-radius: var(--el-input-border-radius, var(--el-border-radius-base));
-            transition: var(--el-transition-box-shadow);
-            border: none;
-        }
+        position: fixed;
+        bottom: 30px;
+        display: block;
+        resize: vertical;
+        padding: 5px 11px;
+        line-height: 1.5;
+        box-sizing: border-box;
+        width: 100%;
+        font-size: inherit;
+        font-family: inherit;
+        color: var(--el-input-text-color, var(--el-text-color-regular));
+        background-color: var(--el-input-bg-color, var(--el-fill-color-blank));
+        background-image: none;
+        box-shadow: 0 0 0 1px var(--el-input-border-color, var(--el-border-color)) inset;
+        border-radius: var(--el-input-border-radius, var(--el-border-radius-base));
+        transition: var(--el-transition-box-shadow);
+        border: none;
+    }
 
-        .loading {
-            color: red;
-            display: none;
-        }
+    .loading {
+        color: red;
+        display: none;
+    }
 
-        .question {
-            text-align: left;
-            background-color: lightblue;
-            border-radius: 10px;
-            padding: 10px;
-            margin: 10px 0;
-        }
+    .question {
+        text-align: left;
+        background-color: lightblue;
+        border-radius: 10px;
+        padding: 10px;
+        margin: 10px 0;
+    }
 
-        .res {
-            text-align: left;
-            background-color: lightyellow;
-            border-radius: 10px;
-            padding: 10px;
-            margin: 10px 0;
-        }
+    .res {
+        text-align: left;
+        background-color: lightyellow;
+        border-radius: 10px;
+        padding: 10px;
+        margin: 10px 0;
+    }
 
-        .footer-box {
-            /* background-color: #f6f6f6; */
-            position: fixed;
-            bottom: 5px;
-            text-align: center;
-            font-size: 13px;
-            width: 100%;
-            color: #666;
-            z-index: 999;
-        }
-    </style>
+    .footer-box {
+        /* background-color: #f6f6f6; */
+        position: fixed;
+        bottom: 5px;
+        text-align: center;
+        font-size: 13px;
+        width: 100%;
+        color: #666;
+        z-index: 999;
+    }
+</style>
 </head>
-
 <body style="overflow: auto;">
     <div align="center">
         <h2>智能问答机器人</h2>
@@ -93,11 +90,18 @@
         </div>
         {% endif %}
         <div>
-            <div class="footer-box"><br /><br />Copyright ©2023 Powered by <a href="https://www.cnsre.cn">SRE运维博客</a></div>
+            <div class="footer-box"><br /><br />Powered by <a href="https://www.cnsre.cn">SRE运维博客</a></div>
         </div>
     </div>
 </body>
 <script>
+    let loading = document.getElementById('loading');
+    let form = document.querySelector('form');
+    form.addEventListener('submit', () => {
+        loading.style.display = 'block';
+    });
+</script>
+
     let loading = document.getElementById('loading');
     let form = document.querySelector('form');
     form.addEventListener('submit', () => {
