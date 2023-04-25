@@ -21,7 +21,7 @@ openai.api_key = 'xxxxx'
 touch nohup.out
 nohup python3 app.py 
 ```
-- 在浏览器中访问http://localhost:80，输入问题并生成答案。
+- 在浏览器中访问 [http://localhost:80](http://localhost:80)，输入问题并生成答案。
 ## 功能说明
 使用OpenAI API的Completion.create方法，传入问题和参数，生成答案。
 使用Flask框架，接收前端发送的问题，并返回生成的答案。
