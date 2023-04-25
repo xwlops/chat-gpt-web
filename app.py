@@ -3,7 +3,7 @@ from flask import Flask, request, render_template, redirect
 
 server = Flask(__name__)
 
-openai.api_key = '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'
+openai.api_key = 'sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 
 
 def get_completion(question):
